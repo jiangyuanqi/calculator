@@ -14,6 +14,11 @@ class MyTestCase(unittest.TestCase):
     #    def test_instantiate_calculator(self):
     #        self.assertIsInstance(self.calculator, Calculator)
 
+    def test_square_root(self):
+        test_data = CsvReader('/src/Unit Test Square Root.csv').data
+        for row in test_data:
+            self.assertEqual(self.calculator.square_root(row['Value 1']), Decimal(row['Result']).quantize(Decimal('.000001')))
+            self.assertEqual(self.calculator.result, Decimal(row['Result']).quantize(Decimal('.000001')))
 
     def test_square(self):
         test_data = CsvReader('/src/Unit Test Square.csv').data
