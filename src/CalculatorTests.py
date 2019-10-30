@@ -14,6 +14,13 @@ class MyTestCase(unittest.TestCase):
     #    def test_instantiate_calculator(self):
     #        self.assertIsInstance(self.calculator, Calculator)
 
+
+    def test_division(self):
+        test_data = CsvReader('/src/Unit Test Division.csv').data
+        for row in test_data:
+            self.assertEqual(self.calculator.division(row['Value 1'], row['Value 2']), Decimal(row['Result']))
+            self.assertEqual(self.calculator.result, Decimal(row['Result']))
+
     def test_multiplication(self):
         test_data = CsvReader('/src/Unit Test Multiplication.csv').data
         for row in test_data:
